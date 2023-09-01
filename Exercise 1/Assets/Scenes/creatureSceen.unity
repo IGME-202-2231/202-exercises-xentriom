@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 46144881}
   - component: {fileID: 46144880}
   m_Layer: 0
-  m_Name: Sphere (4)
+  m_Name: left_arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -745,15 +745,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 229997982}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.064, y: 0.2983, z: 0.058}
+  m_LocalRotation: {x: -0, y: -0, z: 1.4551915e-11, w: 1}
+  m_LocalPosition: {x: 0.06491438, y: 0.29830214, z: 0.059169352}
   m_LocalScale: {x: 2.1772206, y: -0.1375143, z: 2.183727}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 273622454}
   - {fileID: 828530362}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 1644126758}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &273622453
 GameObject:
@@ -2021,7 +2021,7 @@ GameObject:
   - component: {fileID: 738461352}
   - component: {fileID: 738461351}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2110,12 +2110,14 @@ Transform:
   m_LocalScale: {x: 1.164605, y: 1.6071824, z: 1.2077732}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1644126758}
+  - {fileID: 807508300}
   - {fileID: 1279266997}
   - {fileID: 1081937708}
-  - {fileID: 1019249082}
   - {fileID: 46144879}
+  - {fileID: 1019249082}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -0.079, y: -33.176, z: -0.007}
 --- !u!1 &759101148
 GameObject:
@@ -2424,15 +2426,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 807508296}
-  m_LocalRotation: {x: -0, y: -0.28914556, z: -0, w: 0.9572852}
-  m_LocalPosition: {x: 0.323, y: -0.398, z: 0.222}
-  m_LocalScale: {x: 0.10388781, y: 0.21825144, z: 0.17169197}
+  m_LocalRotation: {x: 0.0006872711, y: -0.0038221478, z: 0.00006272661, w: 0.9999925}
+  m_LocalPosition: {x: 0.32335597, y: 0.41193232, z: -0.0003505669}
+  m_LocalScale: {x: 0.08920413, y: 0.13579762, z: 0.142156}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2116801360}
   - {fileID: 306604354}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 738461354}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: -33.614, z: 0}
 --- !u!1 &811478360
 GameObject:
@@ -3486,7 +3488,7 @@ GameObject:
   - component: {fileID: 1019249084}
   - component: {fileID: 1019249083}
   m_Layer: 0
-  m_Name: Sphere (3)
+  m_Name: right_arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3696,7 +3698,7 @@ GameObject:
   - component: {fileID: 1081937710}
   - component: {fileID: 1081937709}
   m_Layer: 0
-  m_Name: Sphere (2)
+  m_Name: right_leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4221,7 +4223,7 @@ GameObject:
   - component: {fileID: 1279266999}
   - component: {fileID: 1279266998}
   m_Layer: 0
-  m_Name: Sphere (1)
+  m_Name: left_leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4454,7 +4456,7 @@ Transform:
   - {fileID: 1588633518}
   - {fileID: 1989988867}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -36.667, z: 0}
 --- !u!1 &1376618116
 GameObject:
@@ -5393,17 +5395,18 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1644126754}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.0006397772, y: 0.28548446, z: 0.00025876862, w: 0.9583831}
+  m_LocalPosition: {x: -0.013137546, y: 0.65954626, z: -0.007403707}
+  m_LocalScale: {x: 0.8492342, y: 0.6222072, z: 0.8369269}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 229997986}
   - {fileID: 1553859890}
   - {fileID: 890633388}
   - {fileID: 371326785}
   - {fileID: 811478361}
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 738461354}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1765564091
 GameObject:
