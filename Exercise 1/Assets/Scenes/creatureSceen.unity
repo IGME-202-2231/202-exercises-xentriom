@@ -767,32 +767,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: body
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8148006424880677601, guid: 82a23f65efbf2414b958e4724b6e7c2e, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8621137564014474255, guid: 82a23f65efbf2414b958e4724b6e7c2e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7723835524667294554}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82a23f65efbf2414b958e4724b6e7c2e, type: 3}
---- !u!1 &7723835524667294553 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8621137564014474255, guid: 82a23f65efbf2414b958e4724b6e7c2e, type: 3}
-  m_PrefabInstance: {fileID: 7723835524667294552}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7723835524667294554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7723835524667294553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 090bb4bcc5a5d854f8c1555ba434d8ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
-  name: Bob
-  creaturePrefab: {fileID: 7723835524667294553}
