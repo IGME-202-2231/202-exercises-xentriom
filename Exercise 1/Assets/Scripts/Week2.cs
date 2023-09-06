@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class scrpt : MonoBehaviour
+public class Week2 : MonoBehaviour
 {
-    [SerializeField] 
+    [SerializeField]
     int health;
 
-    [SerializeField] 
+    [SerializeField]
     string name = "Bob";
 
     [SerializeField]
@@ -30,11 +30,11 @@ public class scrpt : MonoBehaviour
 
     private void Awake()
     {
-        
+
     }
 
     private void OnEnable()
     {
-        
+
     }
 }
