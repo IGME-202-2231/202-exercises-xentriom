@@ -1,9 +1,13 @@
+using system;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Creature : MonoBehaviour
+public class CreatureSpawner : MonoBehaviour
 {
+    [SerializeField]
+    GameObject creaturePrefab;
+
     // Start is called before the first frame update
     void Start()
     {
