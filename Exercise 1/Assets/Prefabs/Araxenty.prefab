@@ -5530,7 +5530,7 @@ GameObject:
   - component: {fileID: 2860618455136034157}
   - component: {fileID: 1730670711416451162}
   m_Layer: 0
-  m_Name: body
+  m_Name: Araxenty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
