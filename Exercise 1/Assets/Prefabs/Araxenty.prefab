@@ -5528,7 +5528,6 @@ GameObject:
   - component: {fileID: 6989102351496750745}
   - component: {fileID: 8310515847084071297}
   - component: {fileID: 2860618455136034157}
-  - component: {fileID: 1730670711416451162}
   m_Layer: 0
   m_Name: Araxenty
   m_TagString: Untagged
@@ -5555,7 +5554,7 @@ Transform:
   - {fileID: 2603000148007527573}
   - {fileID: 8098098469492433367}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -0.079, y: -33.176, z: -0.007}
 --- !u!33 &6989102351496750745
 MeshFilter:
@@ -5628,21 +5627,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1730670711416451162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8621137564014474255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5b3ab78887566849955bcc56bd643fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  creaturePrefab: {fileID: 8621137564014474255}
-  creatureName: Araxenty
-  spawnLocation: {x: 0, y: 0, z: 0}
 --- !u!1 &8621880994119760537
 GameObject:
   m_ObjectHideFlags: 0
