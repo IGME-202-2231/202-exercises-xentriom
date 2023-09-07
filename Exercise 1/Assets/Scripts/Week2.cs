@@ -9,7 +9,7 @@ public class Week2 : MonoBehaviour
     int health;
 
     [SerializeField]
-    string name = "Bob";
+    string creature_name = "Bob";
 
     [SerializeField]
     GameObject creaturePrefab;
@@ -25,7 +25,7 @@ public class Week2 : MonoBehaviour
     void Update()
     {
         ++health;
-        Debug.Log($"Hi my name is {name}");
+        Debug.Log($"Hi my name is {creature_name}");
     }
 
     private void Awake()
