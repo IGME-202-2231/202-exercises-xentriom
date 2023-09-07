@@ -5528,7 +5528,7 @@ GameObject:
   - component: {fileID: 6989102351496750745}
   - component: {fileID: 8310515847084071297}
   - component: {fileID: 2860618455136034157}
-  - component: {fileID: 224077413226195457}
+  - component: {fileID: 1730670711416451162}
   m_Layer: 0
   m_Name: body
   m_TagString: Untagged
@@ -5628,7 +5628,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &224077413226195457
+--- !u!114 &1730670711416451162
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5637,12 +5637,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8621137564014474255}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 090bb4bcc5a5d854f8c1555ba434d8ab, type: 3}
+  m_Script: {fileID: 11500000, guid: a5b3ab78887566849955bcc56bd643fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  name: Bob
-  creaturePrefab: {fileID: 8621137564014474255}
+  creaturePrefab: {fileID: 0}
+  sob: 4
 --- !u!1 &8621880994119760537
 GameObject:
   m_ObjectHideFlags: 0

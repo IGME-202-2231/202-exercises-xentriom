@@ -7,12 +7,6 @@ public class CreatureSpawner : MonoBehaviour
 {
     [SerializeField]
     GameObject creaturePrefab;
-    int sob = 4;
-
-    [SerializeField]
-    Vector2 spawnLocation;
-
-    [SerializeField]
 
     // Start is called before the first frame update
     void Start()
