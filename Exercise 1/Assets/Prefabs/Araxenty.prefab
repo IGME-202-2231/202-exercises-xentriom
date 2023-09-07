@@ -5640,8 +5640,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5b3ab78887566849955bcc56bd643fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  creaturePrefab: {fileID: 0}
-  sob: 4
+  creaturePrefab: {fileID: 8621137564014474255}
+  creatureName: Araxenty
+  spawnLocation: {x: 0, y: 0, z: 0}
 --- !u!1 &8621880994119760537
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,12 +9,15 @@ public class CreatureSpawner : MonoBehaviour
     GameObject creaturePrefab;
 
     [SerializeField]
-    Vector2 spawnLocation;
+    string creatureName = "Araxenty";
+
+    [SerializeField]
+    Vector3 spawnLocation;
 
     // Start is called before the first frame update
     void Start()
     {
-        // e
+        
     }
 
     // Update is called once per frame
