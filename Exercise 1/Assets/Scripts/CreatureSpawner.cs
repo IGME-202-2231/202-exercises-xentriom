@@ -17,15 +17,44 @@ public class CreatureSpawner : MonoBehaviour
         // Initialize spawnLocation and add 3 locations
         spawnLocation = new List<Vector3>(3)
         {
-            new Vector3(0, 0, 10),
-            new Vector3(0, 0, 20),
-            new Vector3(0, 0, 30)
+            new Vector3(0f, 0f, 5f),
+            new Vector3(1.7f, -1.088f, 3.16f),
+            new Vector3(12.26f, 0f, -1.82f)
         };
 
         // Instantiate each prefab
-        foreach (var cord in spawnLocation)
+        for (int i = 0; i < spawnLocation.Count; i++)
         {
-            Instantiate(creaturePrefab, new Vector3(cord.x, cord.y, cord.z), Quaternion.identity);
+            switch (i)
+            {
+                case 0:
+                    Instantiate(
+                        creaturePrefab, 
+                        new Vector3(
+                            spawnLocation[i].x,
+                            spawnLocation[i].y,
+                            spawnLocation[i].z), 
+                        Quaternion.Euler(0f, 98.411f, 0f));
+                    break;
+                case 1:
+                    Instantiate(
+                        creaturePrefab,
+                        new Vector3(
+                            spawnLocation[i].x,
+                            spawnLocation[i].y,
+                            spawnLocation[i].z),
+                        Quaternion.Euler(0f, -30f, -270f));
+                    break;
+                case 2:
+                    Instantiate(
+                        creaturePrefab,
+                        new Vector3(
+                            spawnLocation[i].x,
+                            spawnLocation[i].y,
+                            spawnLocation[i].z),
+                        Quaternion.identity);
+                    break;
+            }
         }
     }
 
