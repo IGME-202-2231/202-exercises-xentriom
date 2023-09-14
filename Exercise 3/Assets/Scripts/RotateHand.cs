@@ -5,7 +5,7 @@ using UnityEngine;
 public class RotateHand : MonoBehaviour
 {
     [SerializeField]
-    private float turnAmount = 0;
+    private float turnAmount = -6;
 
     [SerializeField]
     bool useDeltaTime;
@@ -19,19 +19,13 @@ public class RotateHand : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Quaternion rotateAmount;
-
         if (!useDeltaTime)
         {
-            --turnAmount;
-            rotateAmount = Quaternion.Euler(0f, 0f, turnAmount);
-            transform.rotation = rotateAmount;
+            transform.Rotate(0f, 0f, turnAmount);
         }
         else
         {
-            --turnAmount;
-            rotateAmount = Quaternion.Euler(0f, 0f, turnAmount * Time.deltaTime);
-            transform.rotation = rotateAmount;
+            transform.Rotate(0f, 0f, turnAmount * Time.deltaTime);
         }
     }
 }

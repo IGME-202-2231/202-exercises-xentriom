@@ -358,7 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ea1ed9bd96294647bd989e986a4797a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnAmount: 1
+  turnAmount: 6
   useDeltaTime: 0
 --- !u!1 &1984526153
 GameObject:
