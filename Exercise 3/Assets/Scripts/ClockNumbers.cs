@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ClockNumbers : MonoBehaviour
 {
+    [SerializeField]
+    TextMesh clockNumber;
+
     // Start is called before the first frame update
     void Start()
     {
