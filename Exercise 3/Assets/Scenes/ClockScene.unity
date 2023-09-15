@@ -261,7 +261,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf8ad28be03452645bcf286efd2b666c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clockNumber: {fileID: 0}
+  textMeshes: []
+  clockNumber: {fileID: 981296275181949778, guid: 912cc889abb3b174eaa11674cd6b9771, type: 3}
 --- !u!1 &1369829814
 GameObject:
   m_ObjectHideFlags: 0

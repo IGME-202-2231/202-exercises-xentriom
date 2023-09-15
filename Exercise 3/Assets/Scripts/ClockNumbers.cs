@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,25 +9,26 @@ public class ClockNumbers : MonoBehaviour
     TextMesh clockNumber;
 
     [SerializeField]
-    List<TextMesh> clock;
+    private float radius = 2.19f;
 
     // Start is called before the first frame update
     void Start()
     {
-        clock = new List<TextMesh>(12)
+        for (int i = 1; i <= 12; i++)
         {
-            clockNumber
-        };
+            float angle = i * (360f / 12f) * Mathf.Deg2Rad;
+            float x = Mathf.Sin(angle) * radius;
+            float y = Mathf.Cos(angle) * radius;
+
+            Vector3 position = new(x, y, 0f);
+            TextMesh number = Instantiate(clockNumber, position, Quaternion.identity);
+            number.text = i.ToString();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        float degrees = 0f;
-        for (int i = 3; i < 15; i++)
-        {
-            Instantiate(clockNumber, new Vector3(0f, degrees, 0f), Quaternion.identity);
-            degrees += 30;
-        }
+
     }
 }
