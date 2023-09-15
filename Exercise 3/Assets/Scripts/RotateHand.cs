@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class RotateHand : MonoBehaviour
 {
-    [SerializeField]
     private float turnAmount = -6;
 
     [SerializeField]
@@ -19,6 +18,13 @@ public class RotateHand : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Switch between using deltaTime and not using deltaTime
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            useDeltaTime = !useDeltaTime;
+        }
+
+        // Rotate the hand
         if (!useDeltaTime)
         {
             transform.Rotate(0f, 0f, turnAmount);
