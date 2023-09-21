@@ -12,12 +12,6 @@ public class MovementController : MonoBehaviour
     Vector3 direction = Vector3.zero;
     Vector3 velocity = Vector3.zero;
 
-    public Vector3 Direction 
-    { 
-        get { return direction; }
-        set { if (direction != null) { direction = value.normalized; } }
-    }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -35,5 +29,18 @@ public class MovementController : MonoBehaviour
 
 
         transform.position = objectPosition;
+    }
+
+    public void SetDirection(Vector3 newDirection)
+    {
+        if (newDirection != null)
+        {
+            direction = newDirection.normalized;
+
+            if (direction != Vector3.zero)
+            {
+                transform.rotation = Quaternion.LookRotation(Vector3.back, direction);
+            }
+        }
     }
 }

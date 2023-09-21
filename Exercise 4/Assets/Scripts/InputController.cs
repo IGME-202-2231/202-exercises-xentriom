@@ -10,6 +10,6 @@ public class InputController : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        controller.Direction = context.ReadValue<Vector2>();
+        controller.SetDirection(context.ReadValue<Vector2>());
     }
 }
