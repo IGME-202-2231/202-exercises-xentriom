@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
+    Camera cameraObject = Camera.main;
+
     Vector3 objectPosition = Vector3.zero;
 
     [SerializeField]
@@ -16,6 +18,9 @@ public class MovementController : MonoBehaviour
     void Start()
     {
         objectPosition = transform.position;
+
+        float totalCamHeight = cameraObject.orthographicSize * 2f;
+        float totalCamWidth = totalCamHeight * cameraObject.aspect;
     }
 
     // Update is called once per frame
