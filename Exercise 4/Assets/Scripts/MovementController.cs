@@ -4,37 +4,36 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
-    // Where is the vehicle
-    Vector3 objectPosition = new Vector3(0, 0, 0);
+    Vector3 objectPosition = Vector3.zero;
 
-    // How fast it should move in units per second
-    float speed = 4f;
+    [SerializeField]
+    float speed = 1.0f;
 
-    // Direction vehicle is facing, must be normalized
-    Vector3 direction = new Vector3(1, 0, 0);   // or Vector3.right
+    Vector3 direction = Vector3.zero;
+    Vector3 velocity = Vector3.zero;
 
-    // The delta in position for a single frame
-    Vector3 velocity = new Vector3(0, 0, 0);   // or Vector3.zero
+    public Vector3 Direction 
+    { 
+        get { return direction; }
+        set { if (direction != null) { direction = value.normalized; } }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        // Grab the GameObject’s starting position
         objectPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Velocity is direction * speed * deltaTime
         velocity = direction * speed * Time.deltaTime;
 
-        // Add velocity to position 
         objectPosition += velocity;
 
-        // Validate new calculated position
+        // Check for OB
 
-        // “Draw” this vehicle at that position
+
         transform.position = objectPosition;
     }
 }
