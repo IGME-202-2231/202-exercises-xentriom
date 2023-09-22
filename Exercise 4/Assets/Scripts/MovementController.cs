@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
-    Camera cameraObject = Camera.main;
+    Camera cam;
+    float camHeight;
+    float camWidth;
 
     Vector3 objectPosition = Vector3.zero;
 
@@ -17,25 +19,42 @@ public class MovementController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        objectPosition = transform.position;
+        cam = Camera.main;
+        camHeight = 2.0f * cam.orthographicSize;
+        camWidth = camHeight * cam.aspect;
 
-        float totalCamHeight = cameraObject.orthographicSize * 2f;
-        float totalCamWidth = totalCamHeight * cameraObject.aspect;
+        objectPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
         velocity = direction * speed * Time.deltaTime;
-
         objectPosition += velocity;
 
-        // Check for OB
-
-
         transform.position = objectPosition;
+
+        // Check if the object's x is out of bound
+        if (transform.position.x > camWidth / 2 + .5  || 
+            transform.position.x < -(camWidth / 2 + .5))
+        {
+            objectPosition.x *= -1f;
+            transform.position = objectPosition;
+        }
+
+        // Check if the object's y is out of bound
+        if (transform.position.y > camHeight / 2 + .5 || 
+            transform.position.y < -(camHeight / 2 + .5))
+        {
+            objectPosition.y *= -1f;
+            transform.position = objectPosition;
+        }
     }
 
+    /// <summary>
+    /// Sets the direction of the object
+    /// </summary>
+    /// <param name="newDirection">New direction</param>
     public void SetDirection(Vector3 newDirection)
     {
         if (newDirection != null)
