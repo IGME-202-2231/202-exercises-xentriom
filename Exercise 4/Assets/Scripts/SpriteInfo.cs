@@ -25,7 +25,7 @@ public class SpriteInfo : MonoBehaviour
     /// </summary>
     public Vector2 RectMin
     {
-        get { return rectSize; }
+        get { return new Vector2(0,0); }
     }
 
     /// <summary>
