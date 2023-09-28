@@ -647,6 +647,7 @@ MonoBehaviour:
   - {fileID: 1000032819}
   - {fileID: 1516763527}
   - {fileID: 198487533}
+  sprite: {fileID: 896301837}
 --- !u!1 &1516763526
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,19 +21,29 @@ public class SpriteInfo : MonoBehaviour
     public bool IsColliding { set { isColliding = value; } }
 
     /// <summary>
-    /// 
+    /// Bottom left
     /// </summary>
     public Vector2 RectMin
     {
-        get { return new Vector2(0,0); }
+        get 
+        { 
+            return new Vector2(
+                transform.position.x - (rectSize.x / 2f), 
+                transform.position.y - (rectSize.y / 2f)); 
+        }
     }
 
     /// <summary>
-    /// 
+    /// Top right
     /// </summary>
     public Vector2 RectMax
     {
-        get { return rectSize; }
+        get 
+        { 
+            return new Vector2(
+                transform.position.x + (rectSize.x / 2f), 
+                transform.position.y + (rectSize.y / 2f)); 
+        }
     }
 
     // Update is called once per frame
@@ -48,5 +58,13 @@ public class SpriteInfo : MonoBehaviour
         {
             renderer.color = Color.white;
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+
+        Gizmos.DrawWireSphere(transform.position, radius);
+        Gizmos.DrawWireCube(transform.position, rectSize);
     }
 }
