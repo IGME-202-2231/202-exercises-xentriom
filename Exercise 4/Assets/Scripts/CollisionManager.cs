@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,7 @@ public class CollisionManager : MonoBehaviour
 {
     [SerializeField] List<SpriteInfo> colliables = new List<SpriteInfo>();
     [SerializeField] SpriteInfo sprite;
-    private CollisionType collision = CollisionType.AABB;
+    [SerializeField] CollisionType collision;
 
     // Update is called once per frame
     void Update()
@@ -28,7 +29,13 @@ public class CollisionManager : MonoBehaviour
             {
                 if (AABBCollision(sprite, colliable))
                 {
-
+                    sprite.IsColliding = true;
+                    colliable.IsColliding = true;
+                }
+                else
+                {
+                    sprite.IsColliding = false;
+                    colliable.IsColliding = false;
                 }
             }
         }
@@ -40,7 +47,13 @@ public class CollisionManager : MonoBehaviour
             {
                 if (CircleCollision(sprite, colliable))
                 {
-
+                    sprite.IsColliding = true;
+                    colliable.IsColliding = true;
+                }
+                else
+                {
+                    sprite.IsColliding = false;
+                    colliable.IsColliding = false;
                 }
             }
         }
@@ -72,8 +85,9 @@ public class CollisionManager : MonoBehaviour
     /// <returns>True if the sprites collide</returns>
     bool CircleCollision(SpriteInfo spriteA, SpriteInfo spriteB)
     {
+        // THIS IS BROKEN
         if (Mathf.Pow((spriteB.RectMax.x / 2) - (spriteA.RectMax.x / 2), 2) + 
-            Mathf.Pow((spriteB.RectMax.y / 2) - (spriteA.RectMax.y / 2), 2) <= 
+            Mathf.Pow((spriteB.RectMax.y / 2) - (spriteA.RectMax.y / 2), 2) < 
             Mathf.Pow(spriteA.Radius + spriteB.Radius, 2))
         {
             return true;

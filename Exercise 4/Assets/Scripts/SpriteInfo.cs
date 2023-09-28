@@ -11,14 +11,14 @@ public class SpriteInfo : MonoBehaviour
     bool isColliding = false;
 
     /// <summary>
-    /// 
+    /// Get the radius of the sprite
     /// </summary>
     public float Radius { get { return radius; } }
 
     /// <summary>
-    /// 
+    /// Set the collision state of the sprite
     /// </summary>
-    public bool IsColliding { set { isColliding = value; } }
+    public bool IsColliding { get { return isColliding; } set { isColliding = value; } }
 
     /// <summary>
     /// Bottom left
@@ -60,6 +60,9 @@ public class SpriteInfo : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Draw the collision bound of radius and rect
+    /// </summary>
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
