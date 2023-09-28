@@ -47,14 +47,13 @@ public class CollisionManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Check if collision is true/false via AABB collision
     /// </summary>
-    /// <param name="spriteA"></param>
-    /// <param name="spriteB"></param>
-    /// <returns></returns>
+    /// <param name="spriteA">The first sprite</param>
+    /// <param name="spriteB">The second sprite</param>
+    /// <returns>True if the sprites collide</returns>
     bool AABBCollision (SpriteInfo spriteA, SpriteInfo spriteB)
     {
-        // Check for collision
         if (spriteB.RectMin.x < spriteA.RectMax.x &&
             spriteB.RectMax.x > spriteA.RectMin.x &&
             spriteB.RectMin.y < spriteA.RectMax.y &&
@@ -66,14 +65,16 @@ public class CollisionManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Check if collision is true/false via circle to circle collision
     /// </summary>
-    /// <param name="spriteA"></param>
-    /// <param name="spriteB"></param>
-    /// <returns></returns>
+    /// <param name="spriteA">The first sprite</param>
+    /// <param name="spriteB">The second sprite</param>
+    /// <returns>True if the sprites collide</returns>
     bool CircleCollision(SpriteInfo spriteA, SpriteInfo spriteB)
     {
-        if (spriteA.Radius + spriteB.Radius < 9)
+        if (Mathf.Pow((spriteB.RectMax.x / 2) - (spriteA.RectMax.x / 2), 2) + 
+            Mathf.Pow((spriteB.RectMax.y / 2) - (spriteA.RectMax.y / 2), 2) <= 
+            Mathf.Pow(spriteA.Radius + spriteB.Radius, 2))
         {
             return true;
         }
