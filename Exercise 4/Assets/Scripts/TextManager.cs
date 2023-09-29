@@ -6,14 +6,16 @@ public class TextManager : MonoBehaviour
 {
     // Variable field
     [SerializeField] InputController inputController;
-    [SerializeField] TextMesh textMesh;
+    [SerializeField] TextMesh modeText;
+    [SerializeField] TextMesh instructionText;
     private TextMesh text;
 
     // Start is called before the first frame update
     void Start()
     {
         // Instantiate text
-        text = Instantiate(textMesh, new Vector3(0, -1.85f, 0), Quaternion.identity);
+        Instantiate(instructionText, new Vector3(0f, -1.05f, 0f), Quaternion.identity);
+        text = Instantiate(modeText, new Vector3(0f, -1.85f, 0f), Quaternion.identity);
     }
 
     // Update is called once per frame

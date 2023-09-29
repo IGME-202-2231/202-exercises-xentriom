@@ -94,9 +94,10 @@ public class CollisionManager : MonoBehaviour
     /// <returns>True if the sprites collide</returns>
     bool CircleCollision(SpriteInfo spriteA, SpriteInfo spriteB)
     {
-        // THIS IS BROKEN
-        if (Mathf.Pow((spriteB.RectMax.x / 2) - (spriteA.RectMax.x / 2), 2) + 
-            Mathf.Pow((spriteB.RectMax.y / 2) - (spriteA.RectMax.y / 2), 2) < 
+        Vector2 aCenter = new (spriteA.transform.position.x, spriteA.transform.position.y);
+        Vector2 bCenter = new (spriteB.transform.position.x, spriteB.transform.position.y);
+
+        if (Mathf.Pow(bCenter.x - aCenter.x, 2) + Mathf.Pow(bCenter.y - aCenter.y, 2) < 
             Mathf.Pow(spriteA.Radius + spriteB.Radius, 2))
         {
             return true;
