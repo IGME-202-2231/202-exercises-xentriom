@@ -8,7 +8,7 @@ public class CollisionManager : MonoBehaviour
 {
     // Variable field
     [SerializeField] InputController inputController;
-    [SerializeField] List<SpriteInfo> colliables = new List<SpriteInfo>();
+    [SerializeField] List<SpriteInfo> collectibles = new List<SpriteInfo>();
     [SerializeField] SpriteInfo vehicle;
 
     // Update is called once per frame
@@ -17,17 +17,17 @@ public class CollisionManager : MonoBehaviour
         // AABB
         if (inputController.Collision == CollisionType.AABB)
         {
-            foreach (var colliable in colliables)
+            foreach (var collectable in collectibles)
             {
-                if (AABBCollision(vehicle, colliable))
+                if (AABBCollision(vehicle, collectable))
                 {
                     vehicle.IsColliding = true;
-                    colliable.IsColliding = true;
+                    collectable.IsColliding = true;
                 }
                 else
                 {
                     vehicle.IsColliding = false;
-                    colliable.IsColliding = false;
+                    collectable.IsColliding = false;
                 }
             }
         }
@@ -35,17 +35,17 @@ public class CollisionManager : MonoBehaviour
         // Cicle Collision
         if (inputController.Collision == CollisionType.Circle)
         {
-            foreach (var colliable in colliables)
+            foreach (var collectable in collectibles)
             {
-                if (CircleCollision(vehicle, colliable))
+                if (CircleCollision(vehicle, collectable))
                 {
                     vehicle.IsColliding = true;
-                    colliable.IsColliding = true;
+                    collectable.IsColliding = true;
                 }
                 else
                 {
                     vehicle.IsColliding = false;
-                    colliable.IsColliding = false;
+                    collectable.IsColliding = false;
                 }
             }
         }
