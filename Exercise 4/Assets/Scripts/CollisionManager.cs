@@ -30,23 +30,6 @@ public class CollisionManager : MonoBehaviour
                     colliable.IsColliding = false;
                 }
             }
-
-            /*for (int i = 0; i < colliables.Count; i++)
-            {
-                if (colliables[i] != null)
-                {
-                    if (AABBCollision(vehicle, colliables[i]))
-                    {
-                        vehicle.IsColliding = true;
-                        colliables[i].IsColliding = true;
-                    }
-                    else
-                    {
-                        vehicle.IsColliding = false;
-                        colliables[i].IsColliding = false;
-                    }
-                }
-            }*/
         }
 
         // Cicle Collision
