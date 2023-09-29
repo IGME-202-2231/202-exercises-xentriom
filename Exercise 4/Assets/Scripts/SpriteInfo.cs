@@ -7,7 +7,7 @@ public class SpriteInfo : MonoBehaviour
 {
     // Variable field
     [SerializeField] InputController inputController;
-    [SerializeField] SpriteRenderer renderer;
+    [SerializeField] new SpriteRenderer renderer;
     [SerializeField] Vector2 rectSize = Vector2.one;
     [SerializeField] float radius = 1f;
     private bool isColliding = false;
