@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 198487534}
   - component: {fileID: 198487533}
   m_Layer: 0
-  m_Name: Orange Motorcycle (2)
+  m_Name: Orange Motorcycle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -156,6 +156,7 @@ MonoBehaviour:
   radius: 1
   rectSize: {x: 1, y: 1}
   renderer: {fileID: 198487534}
+  inputController: {fileID: 896301833}
 --- !u!212 &198487534
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -216,7 +217,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 198487532}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.61, y: -3.02, z: 0}
+  m_LocalPosition: {x: 2.97, y: -3.28, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -327,7 +328,7 @@ GameObject:
   - component: {fileID: 772770497}
   - component: {fileID: 772770496}
   m_Layer: 0
-  m_Name: New Text
+  m_Name: Instruction Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -343,12 +344,12 @@ TextMesh:
   m_GameObject: {fileID: 772770495}
   m_Text: Press 'R' to switch between collision types
   m_OffsetZ: 0
-  m_CharacterSize: 0.04
+  m_CharacterSize: 0.03
   m_LineSpacing: 1
   m_Anchor: 4
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 191
+  m_FontSize: 200
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
@@ -405,7 +406,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 772770495}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.26, y: -1.58, z: 0.0389061}
+  m_LocalPosition: {x: 0, y: -1.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -500,7 +501,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 564a1f8ce0bb7c54984d9764a47b8812, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dda338a627dd2e049bd16283467ee53b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -524,7 +525,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &896301836
 MonoBehaviour:
@@ -595,6 +596,7 @@ MonoBehaviour:
   radius: 1
   rectSize: {x: 1, y: 1}
   renderer: {fileID: 896301834}
+  inputController: {fileID: 896301833}
 --- !u!1 &1000032818
 GameObject:
   m_ObjectHideFlags: 0
@@ -607,7 +609,7 @@ GameObject:
   - component: {fileID: 1000032820}
   - component: {fileID: 1000032819}
   m_Layer: 0
-  m_Name: Orange Motorcycle
+  m_Name: Green Motorcycle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -628,6 +630,7 @@ MonoBehaviour:
   radius: 1
   rectSize: {x: 1, y: 1}
   renderer: {fileID: 1000032820}
+  inputController: {fileID: 896301833}
 --- !u!212 &1000032820
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -669,7 +672,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f5baabdf50a451a45bb24bdfbc135d0a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 477778e497d1da345b7ea86ea8e1e02c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -688,12 +691,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000032818}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.576397, y: 2.215185, z: 0}
+  m_LocalPosition: {x: 5.88, y: 2.215185, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1205039612
 GameObject:
@@ -705,6 +708,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1205039613}
   - component: {fileID: 1205039614}
+  - component: {fileID: 1205039615}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -725,7 +729,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1205039614
 MonoBehaviour:
@@ -744,8 +748,22 @@ MonoBehaviour:
   - {fileID: 1000032819}
   - {fileID: 1516763527}
   - {fileID: 198487533}
-  sprite: {fileID: 896301837}
-  collision: 0
+  vehicle: {fileID: 896301837}
+  inputController: {fileID: 896301833}
+--- !u!114 &1205039615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205039612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 013cd63f95faab5499609126822aa8da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputController: {fileID: 896301833}
+  textMesh: {fileID: 8678019432140137291, guid: f796646bcbad8ad4f9df72b9284005eb, type: 3}
 --- !u!1 &1516763526
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,7 +776,7 @@ GameObject:
   - component: {fileID: 1516763528}
   - component: {fileID: 1516763527}
   m_Layer: 0
-  m_Name: Orange Motorcycle (1)
+  m_Name: Yellow Motorcycle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -779,6 +797,7 @@ MonoBehaviour:
   radius: 1
   rectSize: {x: 1, y: 1}
   renderer: {fileID: 1516763528}
+  inputController: {fileID: 896301833}
 --- !u!212 &1516763528
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -820,7 +839,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f5baabdf50a451a45bb24bdfbc135d0a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 743446fbdc3a626438c6182829745c25, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -839,7 +858,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1516763526}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.91, y: 1.84, z: 0}
+  m_LocalPosition: {x: -4.91, y: 1.14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

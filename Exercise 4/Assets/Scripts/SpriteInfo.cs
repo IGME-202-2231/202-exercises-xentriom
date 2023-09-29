@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class SpriteInfo : MonoBehaviour
 {
-    [SerializeField] float radius = 1f;
-    [SerializeField] Vector2 rectSize = Vector2.one;
+    // Variable field
+    [SerializeField] InputController inputController;
     [SerializeField] SpriteRenderer renderer;
-
-    bool isColliding = false;
+    [SerializeField] Vector2 rectSize = Vector2.one;
+    [SerializeField] float radius = 1f;
+    private bool isColliding = false;
 
     /// <summary>
     /// Get the radius of the sprite
@@ -67,7 +69,16 @@ public class SpriteInfo : MonoBehaviour
     {
         Gizmos.color = Color.green;
 
-        Gizmos.DrawWireSphere(transform.position, radius);
-        Gizmos.DrawWireCube(transform.position, rectSize);
+        // Draw the AABB collision bounds of sprite
+        if (inputController.Collision == CollisionType.AABB)
+        {
+            Gizmos.DrawWireCube(transform.position, rectSize);
+        }
+
+        // Draw the circle collision bounds of sprite
+        if (inputController.Collision == CollisionType.Circle)
+        {
+            Gizmos.DrawWireSphere(transform.position, radius);
+        }
     }
 }

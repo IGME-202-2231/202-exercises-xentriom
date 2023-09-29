@@ -4,55 +4,64 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-enum CollisionType { AABB, Circle };
-
 public class CollisionManager : MonoBehaviour
 {
+    // Variable field
+    [SerializeField] InputController inputController;
     [SerializeField] List<SpriteInfo> colliables = new List<SpriteInfo>();
-    [SerializeField] SpriteInfo sprite;
-    [SerializeField] CollisionType collision;
+    [SerializeField] SpriteInfo vehicle;
 
     // Update is called once per frame
     void Update()
     {
-        // Swap between the two mode 
-        if (Keyboard.current[Key.R].isPressed)
-        {
-            if (collision == CollisionType.AABB) { collision = CollisionType.Circle; }
-            if (collision == CollisionType.Circle) { collision = CollisionType.AABB; }
-        }
-
         // AABB
-        if (collision == CollisionType.AABB)
+        if (inputController.Collision == CollisionType.AABB)
         {
             foreach (var colliable in colliables)
             {
-                if (AABBCollision(sprite, colliable))
+                if (AABBCollision(vehicle, colliable))
                 {
-                    sprite.IsColliding = true;
+                    vehicle.IsColliding = true;
                     colliable.IsColliding = true;
                 }
                 else
                 {
-                    sprite.IsColliding = false;
+                    vehicle.IsColliding = false;
                     colliable.IsColliding = false;
                 }
             }
+
+            /*for (int i = 0; i < colliables.Count; i++)
+            {
+                if (colliables[i] != null)
+                {
+                    if (AABBCollision(vehicle, colliables[i]))
+                    {
+                        vehicle.IsColliding = true;
+                        colliables[i].IsColliding = true;
+                    }
+                    else
+                    {
+                        vehicle.IsColliding = false;
+                        colliables[i].IsColliding = false;
+                    }
+                }
+            }*/
         }
 
         // Cicle Collision
-        if (collision == CollisionType.Circle)
+        if (inputController.Collision == CollisionType.Circle)
         {
             foreach (var colliable in colliables)
             {
-                if (CircleCollision(sprite, colliable))
+                if (CircleCollision(vehicle, colliable))
                 {
-                    sprite.IsColliding = true;
+                    vehicle.IsColliding = true;
                     colliable.IsColliding = true;
                 }
                 else
                 {
-                    sprite.IsColliding = false;
+                    vehicle.IsColliding = false;
                     colliable.IsColliding = false;
                 }
             }
