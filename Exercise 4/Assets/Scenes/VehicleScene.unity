@@ -647,8 +647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputController: {fileID: 896301833}
-  collectibles:
-  - {fileID: 896301837}
+  colliables:
   - {fileID: 1000032819}
   - {fileID: 1516763527}
   - {fileID: 198487533}
