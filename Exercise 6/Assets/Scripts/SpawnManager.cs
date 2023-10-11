@@ -7,9 +7,9 @@ public class SpawnManager : Singleton<SpawnManager>
     [SerializeField] SpriteRenderer animalPrefab;
     [SerializeField] List<Sprite> animalImages = new List<Sprite>();
     List<SpriteRenderer> spawnedAnimals = new List<SpriteRenderer>();
-    Vector2 range = new Vector2(10f, 30f);
-    float stdDev = 1f;
-    float mean = 0f;
+    private Vector2 range = new Vector2(10f, 100f);
+    private float stdDev;
+    private float mean;
 
     // (Optional) Prevent non-singleton constructor use.
     protected SpawnManager() { }
@@ -23,7 +23,7 @@ public class SpawnManager : Singleton<SpawnManager>
     // Update is called once per frame
     void Update()
     {
-        
+        stdDev = Random.Range(1f, 4f);
     }
 
     public SpriteRenderer SpawnCreature()
@@ -45,6 +45,19 @@ public class SpawnManager : Singleton<SpawnManager>
             spawnedAnimals[i].color = Random.ColorHSV(0f, 1f, 1f, 1f, 1f, 1f);
 
             // Set position
+            float meanRange = Random.Range(0, 10);
+            if (meanRange >= 0f && meanRange <= 6f)
+            {
+                mean = 0f;
+            }
+            else if (meanRange == 7f || meanRange == 8f)
+            {
+                mean = -1f;
+            }
+            else
+            {
+                mean = 1f;
+            }
             Vector2 spawnPosition = new Vector2(
                 Gaussian(mean, stdDev),
                 Gaussian(mean, stdDev));
