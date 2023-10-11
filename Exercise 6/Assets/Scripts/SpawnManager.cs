@@ -7,7 +7,9 @@ public class SpawnManager : Singleton<SpawnManager>
     [SerializeField] SpriteRenderer animalPrefab;
     [SerializeField] List<Sprite> animalImages = new List<Sprite>();
     List<SpriteRenderer> spawnedAnimals = new List<SpriteRenderer>();
+    Vector2 range = new Vector2(10f, 30f);
     float stdDev = 1f;
+    float mean = 0f;
 
     // (Optional) Prevent non-singleton constructor use.
     protected SpawnManager() { }
@@ -33,7 +35,7 @@ public class SpawnManager : Singleton<SpawnManager>
     {
         DestroyAnimal();
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < Random.Range(range.x, range.y); i++)
         {
             spawnedAnimals.Add(SpawnCreature());
 
@@ -44,27 +46,41 @@ public class SpawnManager : Singleton<SpawnManager>
 
             // Set position
             Vector2 spawnPosition = new Vector2(
-                Gaussian(0, stdDev),
-                Gaussian(0, stdDev));
+                Gaussian(mean, stdDev),
+                Gaussian(mean, stdDev));
             spawnedAnimals[i].transform.position = spawnPosition;
 
             // Picking random animal
             float randValue = Random.value;
-            if (randValue < 0.6f)
+            if (randValue < 0.10f)
             {
-                spawnedAnimals[i].sprite = animalImages[0];
+                spawnedAnimals[i].sprite = animalImages[2];
             }
-            else if (randValue < 0.84)
+            else if (randValue < 0.25f)
             {
                 spawnedAnimals[i].sprite = animalImages[3];
             }
+            else if (randValue < 0.45f)
+            {
+                spawnedAnimals[i].sprite = animalImages[4];
+            }
+            else if (randValue < 0.70)
+            {
+                spawnedAnimals[i].sprite = animalImages[0];
+            }
             else
             {
-                spawnedAnimals[i].sprite = animalImages[2];
+                spawnedAnimals[i].sprite = animalImages[1];
             }
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="mean"></param>
+    /// <param name="std"></param>
+    /// <returns></returns>
     float Gaussian(float mean, float std)
     {
         float val1 = Random.Range(0f, 1f);
@@ -77,6 +93,9 @@ public class SpawnManager : Singleton<SpawnManager>
         return mean + std * gaussValue;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public void DestroyAnimal()
     {
         foreach (var animal in spawnedAnimals)
