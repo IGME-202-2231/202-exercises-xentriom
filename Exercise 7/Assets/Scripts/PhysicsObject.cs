@@ -52,4 +52,24 @@ public class PhysicsObject : MonoBehaviour
     {
         acceleration += force;
     }
+
+    void Bounce()
+    {
+        /*if (transform.position.x > Camera.main.pixelWidth)
+        {
+            transform.position.x = Camera.main.pixelWidth;
+            velocity.x *= -1;
+        }
+        else if (transform.position.x < 0)
+        {
+            transform.position.x = 0;
+            velocity.x *= -1;
+        }
+
+        if (transform.position.y > Camera.main.pixelHeight)
+        {
+            transform.position.y = Camera.main.pixelHeight;
+            velocity.y *= -1;
+        }*/
+    }
 }
