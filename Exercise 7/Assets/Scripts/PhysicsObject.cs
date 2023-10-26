@@ -11,10 +11,19 @@ public class PhysicsObject : MonoBehaviour
     [SerializeField] float mass = 1;
     [SerializeField] float maxSpeed = 10;
     [SerializeField] bool useGravity = true;
+    private Camera cam;
+    private float camHeight;
+    private float camWidth;
+    private Vector2 screenMin;
+    private Vector2 screenMax;
 
     // Start is called before the first frame update
     void Start()
     {
+        cam = Camera.main;
+        camHeight = 2.0f * cam.orthographicSize;
+        camWidth = camHeight * cam.aspect;
+
         position = transform.position;
     }
 
@@ -31,6 +40,8 @@ public class PhysicsObject : MonoBehaviour
 
         // Cap max velocity
         velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
+
+        CheckBounds();
 
         position += velocity * Time.deltaTime;
 
@@ -53,23 +64,30 @@ public class PhysicsObject : MonoBehaviour
         acceleration += force;
     }
 
-    void Bounce()
+    void CheckBounds()
     {
-        /*if (transform.position.x > Camera.main.pixelWidth)
-        {
-            transform.position.x = Camera.main.pixelWidth;
-            velocity.x *= -1;
-        }
-        else if (transform.position.x < 0)
-        {
-            transform.position.x = 0;
-            velocity.x *= -1;
+        // Check left/right
+       if (position.x <= screenMin.x)
+       {
+            velocity.x *= -1f;
+            position.x = screenMin.x;
+       }
+       else if (position.x >= screenMax.x)
+       {
+            velocity.x *= -1f;
+            position.x = screenMax.x;
         }
 
-        if (transform.position.y > Camera.main.pixelHeight)
-        {
-            transform.position.y = Camera.main.pixelHeight;
-            velocity.y *= -1;
-        }*/
+       // Check top/bottom
+       if (position.y <= screenMin.y)
+       {
+            velocity.y *= -1f;
+            position.x = screenMax.y;
+       }
+       else if (position.y >= screenMax.y)
+       {
+            velocity.y *= -1f;
+            position.x = screenMin.y;
+       }
     }
 }
