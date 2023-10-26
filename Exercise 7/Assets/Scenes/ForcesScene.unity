@@ -192,7 +192,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9197877524770575734, guid: dc9c1f38ecfefc94e9afb5da2ee9bd74, type: 3}
       propertyPath: maxSpeed
-      value: 5
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9197877524770575734, guid: dc9c1f38ecfefc94e9afb5da2ee9bd74, type: 3}
+      propertyPath: useFriction
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -401,7 +405,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6312251488981895776, guid: df84f77e74e50a8468543eb9b8a77352, type: 3}
       propertyPath: maxSpeed
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -470,7 +474,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8575620169542559483, guid: e7f036aa1b5eb8c44aa0696f2c9f1224, type: 3}
       propertyPath: maxSpeed
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8575620169542559483, guid: e7f036aa1b5eb8c44aa0696f2c9f1224, type: 3}
       propertyPath: useGravity

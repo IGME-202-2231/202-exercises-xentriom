@@ -8,14 +8,16 @@ public class PhysicsObject : MonoBehaviour
     [SerializeField] Vector3 direction;
     [SerializeField] Vector3 velocity;
     [SerializeField] Vector3 acceleration = Vector3.zero;
+
     [SerializeField] float mass = 1;
-    [SerializeField] float maxSpeed = 10;
+    [SerializeField][Range(0, 10)] int maxSpeed;
+
     [SerializeField] bool useGravity = true;
+    [SerializeField] bool useFriction;
+
     private Camera cam;
     private float camHeight;
     private float camWidth;
-    private Vector2 screenMin;
-    private Vector2 screenMax;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +35,10 @@ public class PhysicsObject : MonoBehaviour
         if (useGravity)
         {
             ApplyGravity(Vector3.down * 9.8f);
+        }
+        if (useFriction)
+        {
+            ApplyFriction(0.8f);
         }
 
         // Calculate the velocity for this frame
@@ -64,30 +70,38 @@ public class PhysicsObject : MonoBehaviour
         acceleration += force;
     }
 
+    public void ApplyFriction(float coefficient)
+    {
+        Vector3 friction = velocity * -1;
+        friction.Normalize();
+        friction *= coefficient;
+        ApplyForce(friction);
+    }
+
     void CheckBounds()
     {
-        // Check left/right
-       if (position.x <= screenMin.x)
-       {
-            velocity.x *= -1f;
-            position.x = screenMin.x;
-       }
-       else if (position.x >= screenMax.x)
-       {
-            velocity.x *= -1f;
-            position.x = screenMax.x;
+        // X Checks
+        if (position.x <= -camWidth / 2)
+        {
+            velocity.x *= -1;
+            position.x = -camWidth / 2;
+        }
+        else if (position.x >= camWidth / 2)
+        {
+            velocity.x *= -1;
+            position.x = camWidth / 2;
         }
 
-       // Check top/bottom
-       if (position.y <= screenMin.y)
-       {
-            velocity.y *= -1f;
-            position.x = screenMax.y;
-       }
-       else if (position.y >= screenMax.y)
-       {
-            velocity.y *= -1f;
-            position.x = screenMin.y;
-       }
+        // Y Checks
+        if (position.y <= -camHeight / 2 + .5f)
+        {
+            velocity.y *= -1;
+            position.y = -camHeight / 2 + .5f;
+        }
+        else if (position.y >= camHeight / 2)
+        {
+            velocity.y *= -1;
+            position.y = camHeight / 2;
+        }
     }
 }
