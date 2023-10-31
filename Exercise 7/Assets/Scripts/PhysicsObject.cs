@@ -19,6 +19,13 @@ public class PhysicsObject : MonoBehaviour
     private float camHeight;
     private float camWidth;
 
+    [SerializeField] float radius;
+
+    public float Radius { get { return radius; } }
+    public Vector3 Velocity { get { return velocity; } }
+
+    public int MaxSpeed { get { return maxSpeed; } }
+
     // Start is called before the first frame update
     void Start()
     {
