@@ -34,7 +34,7 @@ public class PhysicsObject : MonoBehaviour
     {
         if (useGravity)
         {
-            ApplyGravity(Vector3.down * 9.8f);
+            ApplyGravity(Vector3.down * 1f);
         }
         if (useFriction)
         {
