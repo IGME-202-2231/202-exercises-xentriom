@@ -8,6 +8,18 @@ public abstract class Agent : MonoBehaviour
     [SerializeField] protected PhysicsObject physicsObject;
     [SerializeField] protected float maxForce = 10;
 
+    protected Camera cam;
+    protected Vector2 camSize;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        cam = Camera.main;
+        camSize = new Vector2(
+            (2.0f * cam.orthographicSize) * cam.aspect, 
+            2.0f * cam.orthographicSize); 
+    }
+
     // Update is called once per frame
     void Update()
     {
