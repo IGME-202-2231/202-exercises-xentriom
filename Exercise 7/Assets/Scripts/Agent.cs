@@ -5,15 +5,18 @@ using static UnityEditor.PlayerSettings;
 
 public abstract class Agent : MonoBehaviour
 {
+    // Physics object of the agent and max force
     [SerializeField] protected PhysicsObject physicsObject;
     [SerializeField] protected float maxForce = 10;
 
+    // Camera and camera size
     protected Camera cam;
     protected Vector2 camSize;
 
     // Start is called before the first frame update
     void Start()
     {
+        // Get the camera and determine camera size
         cam = Camera.main;
         camSize = new Vector2(
             (2.0f * cam.orthographicSize) * cam.aspect, 
@@ -21,7 +24,7 @@ public abstract class Agent : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         CalcSteeringForces();
     }
