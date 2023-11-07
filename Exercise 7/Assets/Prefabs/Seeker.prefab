@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4680726605472161541}
   - component: {fileID: 707615683018789917}
   - component: {fileID: 1017487831966342608}
+  - component: {fileID: 2898392073934605511}
   m_Layer: 0
   m_Name: Seeker
   m_TagString: Untagged
@@ -102,7 +103,22 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   acceleration: {x: 0, y: 0, z: 0}
   mass: 1
-  maxSpeed: 0
-  useGravity: 1
+  maxSpeed: 10
+  useGravity: 0
   useFriction: 0
-  radius: 0
+  radius: 0.25
+--- !u!114 &2898392073934605511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6448701768255803365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 251b89a6ec602a14f838c17c9ef560d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  physicsObject: {fileID: 1017487831966342608}
+  maxForce: 10
+  target: {fileID: 0}
