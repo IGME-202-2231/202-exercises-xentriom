@@ -103,8 +103,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   acceleration: {x: 0, y: 0, z: 0}
   mass: 1
-  maxSpeed: 0
-  useGravity: 1
+  maxSpeed: 2
+  useGravity: 0
   useFriction: 0
   radius: 0
 --- !u!114 &1015564982635422548
@@ -121,5 +121,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsObject: {fileID: 5991961778136955204}
   maxForce: 10
-  wanderTime: 0
-  wanderRadius: 0
+  wanderTime: 2
+  wanderRadius: 1
