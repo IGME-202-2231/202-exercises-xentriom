@@ -40,6 +40,11 @@ public abstract class Agent : MonoBehaviour
         return Flee(target.transform.position);
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="targetPos"></param>
+    /// <returns></returns>
     protected Vector3 Seek(Vector3 targetPos)
     {
         // Calculate desired velocity
@@ -55,6 +60,11 @@ public abstract class Agent : MonoBehaviour
         return seekingForce;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="targetPos"></param>
+    /// <returns></returns>
     protected Vector3 Flee(Vector3 targetPos)
     {
         // Calculate desired velocity
@@ -68,5 +78,32 @@ public abstract class Agent : MonoBehaviour
 
         // Return seek steering force
         return seekingForce;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="time"></param>
+    /// <param name="radius"></param>
+    /// <returns></returns>
+    protected Vector3 Wander(float time, float radius)
+    {
+        Vector3 targetPos = CalcFuturePosition(time);
+        float randAngle = Random.Range(0, Mathf.PI * 2);
+
+        targetPos.x += Mathf.Cos(randAngle) * radius;
+        targetPos.y += Mathf.Sin(randAngle) * radius;
+
+        return Seek(targetPos);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="time"></param>
+    /// <returns></returns>
+    public Vector3 CalcFuturePosition(float time)
+    {
+        return physicsObject.Velocity * time + transform.position;
     }
 }
