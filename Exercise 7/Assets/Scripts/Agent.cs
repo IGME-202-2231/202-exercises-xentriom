@@ -55,6 +55,7 @@ public abstract class Agent : MonoBehaviour
         // Return seek steering force
         return seekingForce;
     }
+
     protected Vector3 Flee(Vector3 targetPos)
     {
         // Calculate desired velocity
