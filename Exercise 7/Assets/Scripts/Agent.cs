@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public abstract class Agent : MonoBehaviour
 {
@@ -17,14 +18,14 @@ public abstract class Agent : MonoBehaviour
     {
         // Get the camera and determine camera size
         cam = Camera.main;
-        camSize = new Vector2(
-            (2.0f * cam.orthographicSize) * cam.aspect, 
-            2.0f * cam.orthographicSize); 
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
+        camSize = new Vector2(
+            (2.0f * cam.orthographicSize) * cam.aspect,
+            2.0f * cam.orthographicSize);
         CalcSteeringForces();
     }
 
@@ -95,6 +96,18 @@ public abstract class Agent : MonoBehaviour
         targetPos.y += Mathf.Sin(randAngle) * radius;
 
         return Seek(targetPos);
+    }
+
+    protected Vector3 StayInBounds()
+    {
+        if (transform.position.x <= -camSize.x / 2 + 1 ||
+            transform.position.x >= camSize.x / 2 - 1 ||
+            transform.position.y <= -camSize.y / 2 + 1 ||
+            transform.position.y >= camSize.y / 2 - 1)
+        {
+            return Seek(Vector3.zero);
+        }
+        return Vector3.zero;
     }
 
     /// <summary>

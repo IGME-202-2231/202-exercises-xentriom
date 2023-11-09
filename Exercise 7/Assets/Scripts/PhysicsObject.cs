@@ -54,7 +54,7 @@ public class PhysicsObject : MonoBehaviour
         // Cap max velocity
         velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
 
-        CheckBounds();
+        // CheckBounds();
 
         position += velocity * Time.deltaTime;
 
