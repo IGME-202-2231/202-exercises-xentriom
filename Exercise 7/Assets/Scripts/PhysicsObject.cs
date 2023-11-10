@@ -1,39 +1,34 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PhysicsObject : MonoBehaviour
 {
-    [SerializeField] Vector3 position;
     [SerializeField] Vector3 direction;
     [SerializeField] Vector3 velocity;
-    [SerializeField] Vector3 acceleration = Vector3.zero;
+    [SerializeField] Vector3 acceleration;
 
     [SerializeField] float mass = 1;
-    [SerializeField][Range(0, 10)] int maxSpeed;
-
-    [SerializeField] bool useGravity = true;
+    [SerializeField] float radius;
+    [SerializeField] bool useGravity;
     [SerializeField] bool useFriction;
 
-    private Camera cam;
-    private float camHeight;
-    private float camWidth;
-
-    [SerializeField] float radius;
+    private Vector3 camSize;
 
     public float Radius { get { return radius; } }
     public Vector3 Velocity { get { return velocity; } }
-
-    public int MaxSpeed { get { return maxSpeed; } }
+    public Vector3 Direction { get { return direction; } }
+    public Vector3 Position { get { return transform.position; } set { transform.position = value; } }
+    public Vector3 CamSize { get { return camSize; } }
 
     // Start is called before the first frame update
     void Start()
     {
-        cam = Camera.main;
-        camHeight = 2.0f * cam.orthographicSize;
-        camWidth = camHeight * cam.aspect;
+        camSize.y = Camera.main.orthographicSize;
+        camSize.x = camSize.y * Camera.main.aspect;
 
-        position = transform.position;
+        direction = UnityEngine.Random.insideUnitCircle.normalized;
     }
 
     // Update is called once per frame
@@ -41,7 +36,7 @@ public class PhysicsObject : MonoBehaviour
     {
         if (useGravity)
         {
-            ApplyGravity(Vector3.down * 1f);
+            ApplyGravity(Physics.gravity);
         }
         if (useFriction)
         {
@@ -51,20 +46,20 @@ public class PhysicsObject : MonoBehaviour
         // Calculate the velocity for this frame
         velocity += acceleration * Time.deltaTime;
 
-        // Cap max velocity
-        velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
+        CheckBounds();
 
-        // CheckBounds();
-
-        position += velocity * Time.deltaTime;
+        transform.position += velocity * Time.deltaTime;
 
         // Grab current direction from velocity
-        direction = velocity.normalized;
-
-        transform.position = position;
+        if (velocity.sqrMagnitude > Mathf.Epsilon)
+        {
+            direction = velocity.normalized;
+        }
 
         // Zero out acceleration
         acceleration = Vector3.zero;
+
+        transform.rotation = Quaternion.LookRotation(Vector3.back, direction);
     }
 
     public void ApplyForce(Vector3 force)
@@ -82,33 +77,28 @@ public class PhysicsObject : MonoBehaviour
         Vector3 friction = velocity * -1;
         friction.Normalize();
         friction *= coefficient;
+
         ApplyForce(friction);
     }
 
-    void CheckBounds()
+    private void CheckBounds()
     {
-        // X Checks
-        if (position.x <= -camWidth / 2)
+        if  (transform.position.x > camSize.x)
         {
             velocity.x *= -1;
-            position.x = -camWidth / 2;
         }
-        else if (position.x >= camWidth / 2)
+        if (transform.position.x < -camSize.x)
         {
             velocity.x *= -1;
-            position.x = camWidth / 2;
         }
 
-        // Y Checks
-        if (position.y <= -camHeight / 2 + .5f)
+        if (transform.position.y > camSize.y)
         {
             velocity.y *= -1;
-            position.y = -camHeight / 2 + .5f;
         }
-        else if (position.y >= camHeight / 2)
+        if (transform.position.y < -camSize.y)
         {
             velocity.y *= -1;
-            position.y = camHeight / 2;
         }
     }
 }

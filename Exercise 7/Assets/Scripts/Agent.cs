@@ -3,120 +3,107 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+[RequireComponent(typeof(PhysicsObject))]
 public abstract class Agent : MonoBehaviour
 {
-    // Physics object of the agent and max force
     [SerializeField] protected PhysicsObject physicsObject;
     [SerializeField] protected float maxForce = 10;
+    [SerializeField] protected float maxSpeed = 10;
+    private Vector3 totalForce = Vector3.zero;
 
-    // Camera and camera size
-    protected Camera cam;
-    protected Vector2 camSize;
+    private float wanderAngle = 0;
+    private float maxWanderAngle = 45;
+    private float maxWanderChangePS = 10;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        // Get the camera and determine camera size
-        cam = Camera.main;
+    // Awake is called when the script instance is being loaded
+    private void Awake()
+    { 
+        if (physicsObject == null)
+        {
+            physicsObject = GetComponent<PhysicsObject>();
+        }
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
-        camSize = new Vector2(
-            (2.0f * cam.orthographicSize) * cam.aspect,
-            2.0f * cam.orthographicSize);
         CalcSteeringForces();
+
+        totalForce = Vector3.ClampMagnitude(totalForce, maxForce);
+        physicsObject.ApplyForce(totalForce);
+
+        totalForce = Vector3.zero;
     }
 
     protected abstract void CalcSteeringForces();
 
-    protected Vector3 Seek(GameObject target)
+    protected void Seek(GameObject target)
     {
-        return Seek(target.transform.position);
+        Seek(target.transform.position);
     }
 
-    protected Vector3 Flee(GameObject target)
-    {
-        return Flee(target.transform.position);
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="targetPos"></param>
-    /// <returns></returns>
-    protected Vector3 Seek(Vector3 targetPos)
+    protected void Seek(Vector3 targetPos, float weight = 1f)
     {
         // Calculate desired velocity
-        Vector3 desiredVelocity = targetPos - transform.position;
+        Vector3 desiredVelocity = targetPos - physicsObject.Position;
 
         // Set desired = max speed
-        desiredVelocity = desiredVelocity.normalized * physicsObject.MaxSpeed;
+        desiredVelocity = desiredVelocity.normalized * maxSpeed;
 
         // Calculate seek steering force
         Vector3 seekingForce = desiredVelocity - physicsObject.Velocity;
 
-        // Return seek steering force
-        return seekingForce;
+        // Apply the seeks teering force
+        totalForce += seekingForce * weight;
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="targetPos"></param>
-    /// <returns></returns>
-    protected Vector3 Flee(Vector3 targetPos)
+    protected void Flee(GameObject target)
+    {
+        Flee(target.transform.position);
+    }
+
+    protected void Flee(Vector3 targetPos, float weight = 1f)
     {
         // Calculate desired velocity
-        Vector3 desiredVelocity = transform.position - targetPos;
+        Vector3 desiredVelocity = physicsObject.Position - targetPos;
 
         // Set desired = max speed
-        desiredVelocity = desiredVelocity.normalized * physicsObject.MaxSpeed;
+        desiredVelocity = desiredVelocity.normalized * maxSpeed;
 
         // Calculate seek steering force
-        Vector3 seekingForce = desiredVelocity - physicsObject.Velocity;
+        Vector3 fleeingForce = desiredVelocity - physicsObject.Velocity;
 
-        // Return seek steering force
-        return seekingForce;
+        //apply the flee teering force
+        totalForce += fleeingForce * weight;
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="time"></param>
-    /// <param name="radius"></param>
-    /// <returns></returns>
-    protected Vector3 Wander(float time, float radius)
+    protected void Wander(float weight = 1f)
     {
-        Vector3 targetPos = CalcFuturePosition(time);
-        float randAngle = Random.Range(0, Mathf.PI * 2);
+        float wanderChange = maxWanderChangePS * Time.deltaTime;
+        wanderAngle += Random.Range(-wanderChange, wanderChange);
 
-        targetPos.x += Mathf.Cos(randAngle) * radius;
-        targetPos.y += Mathf.Sin(randAngle) * radius;
+        wanderAngle = Mathf.Clamp(wanderAngle, -maxWanderAngle, maxWanderAngle);
 
-        return Seek(targetPos);
+        Vector3 wanderTarget = Quaternion.Euler(0, 0, wanderAngle) * physicsObject.Direction.normalized + physicsObject.Position;
+
+        Seek(wanderTarget, weight);
     }
 
-    protected Vector3 StayInBounds()
+    protected void StayInBounds(float weight = 1f)
     {
-        if (transform.position.x <= -camSize.x / 2 + 1 ||
-            transform.position.x >= camSize.x / 2 - 1 ||
-            transform.position.y <= -camSize.y / 2 + 1 ||
-            transform.position.y >= camSize.y / 2 - 1)
+        Vector3 futurePosition = CalcFuturePosition(1);
+
+        if (futurePosition.x <= -physicsObject.CamSize.x ||
+            futurePosition.x >= physicsObject.CamSize.x ||
+            futurePosition.y <= -physicsObject.CamSize.y ||
+            futurePosition.y >= physicsObject.CamSize.y)
         {
-            return Seek(Vector3.zero);
+            Seek(Vector3.zero, weight);
         }
-        return Vector3.zero;
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="time"></param>
-    /// <returns></returns>
     public Vector3 CalcFuturePosition(float time)
     {
-        return physicsObject.Velocity * time + transform.position;
+        return physicsObject.Position + physicsObject.Velocity * time;
     }
 }

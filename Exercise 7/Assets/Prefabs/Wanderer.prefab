@@ -98,7 +98,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f0fa7703428c047ba3f3c4586feabd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: 0, y: 0, z: 0}
   direction: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   acceleration: {x: 0, y: 0, z: 0}
@@ -120,6 +119,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   physicsObject: {fileID: 5991961778136955204}
-  maxForce: 10
+  maxForce: 5
+  maxSpeed: 5
   wanderTime: 2
   wanderRadius: 1
+  wanderWeight: 1
+  stayInBoundWeight: 3

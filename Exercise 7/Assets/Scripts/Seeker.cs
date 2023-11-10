@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Seeker : Agent
 {
-    // Target of seeker (fleer)
     [SerializeField] GameObject target;
 
     // Update is called once per frame
@@ -13,13 +12,9 @@ public class Seeker : Agent
         base.Update();
     }
 
-    /// <summary>
-    /// Seek the target and teleport fleer if collision occurs
-    /// </summary>
     protected override void CalcSteeringForces()
     {
-        Vector3 seekForce = Seek(target);
-        physicsObject.ApplyForce(seekForce);
+        Seek(target);
     }
 
     private void OnDrawGizmosSelected()
